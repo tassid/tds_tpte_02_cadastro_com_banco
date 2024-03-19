@@ -1,13 +1,26 @@
-var construtor = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Builder;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Adicionar serviços ao contêiner.
-construtor.Services.AddControllers();
-construtor.Services.AddSwaggerGen(c =>
+builder.Services.AddControllers();
+
+// Configurar o banco de dados SQLite
+builder.Services.AddDbContext<ProductDbContext>(options =>
 {
-    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "MinimalApiProducts", Version = "v1" });
+    options.UseSqlite("Data Source=Products.db");
 });
 
-var app = construtor.Build();
+// Adicionar Swagger
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "MinimalApiProducts", Version = "v1" });
+});
+
+var app = builder.Build();
 
 // Configurar o pipeline de solicitação HTTP.
 if (!app.Environment.IsDevelopment())
@@ -15,12 +28,14 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/error");
 }
 
+// Configurar o Swagger
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "MinimalApiProducts v1");
 });
 
+// Mapear os controladores
 app.MapControllers();
 
 app.Run();

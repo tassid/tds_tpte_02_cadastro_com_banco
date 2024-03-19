@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 [ApiController]
@@ -14,12 +15,15 @@ public class ProductsController : ControllerBase
         _dbContext = dbContext;
     }
 
+    // GET /products
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
     {
-        return await _dbContext.Products.ToListAsync();
+        var products = await _dbContext.Products.ToListAsync();
+        return Ok(products);
     }
 
+    // GET /products/{id}
     [HttpGet("{id}")]
     public async Task<ActionResult<Product>> GetProduct(int id)
     {
@@ -28,9 +32,10 @@ public class ProductsController : ControllerBase
         {
             return NotFound();
         }
-        return product;
+        return Ok(product);
     }
 
+    // POST /products
     [HttpPost]
     public async Task<ActionResult<Product>> CreateProduct(Product product)
     {
@@ -39,6 +44,7 @@ public class ProductsController : ControllerBase
         return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
     }
 
+    // PUT /products/{id}
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateProduct(int id, Product product)
     {
@@ -68,6 +74,7 @@ public class ProductsController : ControllerBase
         return NoContent();
     }
 
+    // DELETE /products/{id}
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProduct(int id)
     {
