@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "u9fkGITYSyN4piK+Scx05HPOixRdQ3+k7SXiUeenQF4ySB8BOppwj8EdzJIaBwLdLrwao8iUNv+mHQk4GLFHTQ==",
+  "dgSpecHash": "sGlwfRE7y6KvFKbSU3Mjn6H3eB7N8HskPRp/RRMKyuNmWlKCaWPdsUNvbys3MSH4JdJVISKSJD8BL/PuO5uJcQ==",
   "success": true,
   "projectFilePath": "/Users/tassianeanzolin/Music/tds_tpte_02_cadastro_com_banco/CadastroBanco/CadastroBanco.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/tassianeanzolin/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/tassianeanzolin/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/tassianeanzolin/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "/Users/tassianeanzolin/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "/Users/tassianeanzolin/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "/Users/tassianeanzolin/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.5.0/swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
   "logs": []
 }
